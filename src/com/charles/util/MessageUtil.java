@@ -2,6 +2,7 @@ package com.charles.util;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -14,14 +15,15 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-import com.charles.po.ImageMessage;
+import com.charles.po.News;
+import com.charles.po.NewsMessage;
 import com.charles.po.TextMessage;
 import com.thoughtworks.xstream.XStream;
 
 
 public class MessageUtil {
 	
-	public static final String MESSAGE_IMAGE = "image" ;
+	public static final String MESSAGE_NEWS = "news" ;
 	public static final String MESSAGE_TEXT = "text";
 	public static final String MESSAGE_VOICE = "voice";
 	public static final String MESSAGE_VIDEO = "video";
@@ -71,23 +73,35 @@ public class MessageUtil {
 		return textMessageToXml(text);
 	}
 	
-	//回复图片
-	public static String initImage(String toUserName,String fromUserName){
-		ImageMessage image = new ImageMessage();
-		image.setFromUserName(toUserName);
-		image.setToUserName(fromUserName);
-		image.setMsgType(MESSAGE_IMAGE);
-		image.setCreateTime(new Date().getTime()+"");
-		image.setMediaId("test");
-		image.setPicUrl("http://6b4010e6.ngrok.natapp.cn/wechat/images/1.jpg");
-		return imageMessageToXml(image);
+	//图文消息
+	public static String initNews(String toUserName,String fromUserName){
+		NewsMessage news = new NewsMessage();
+		news.setArticleCount("2");
+		//news.setArticles(articles);
+		news.setCreateTime(new Date().getTime()+"");
+		news.setToUserName(fromUserName);
+		news.setFromUserName(toUserName);
+		news.setMsgType(MESSAGE_NEWS);
+		
+		
+		List<News> newsList = new ArrayList<News>();
+		for(int i=0;i<new Integer(news.getArticleCount());i++){
+			News n = new News();
+			n.setPicUrl("http://6b4010e6.ngrok.natapp.cn/wechat/images/abc.jpg");
+			n.setTitle("测试标题");
+			n.setDescription("测试描述");
+			n.setUrl("www.baidu.com");
+			newsList.add(n);
+		}
+		news.setArticles(newsList);
+		return NewsMessageToXml(news);
 	}
 	
-	//图片转换为xml
-	public static String imageMessageToXml(ImageMessage imageMessage){
+	public static String NewsMessageToXml(NewsMessage newsMessage){
 		XStream xstream = new XStream();
-		xstream.alias("xml", imageMessage.getClass());
-		return xstream.toXML(imageMessage);
+		xstream.alias("xml", newsMessage.getClass());
+		xstream.alias("item",new News().getClass());
+		return xstream.toXML(newsMessage);
 	}
 	
 	//主菜单
