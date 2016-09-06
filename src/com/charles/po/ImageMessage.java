@@ -2,8 +2,8 @@ package com.charles.po;
 
 public class ImageMessage extends BaseMessage{
 	private String picUrl;
-	private String mediaId;
-	private String msgId;
+	private String MediaId;
+	private String MsgId;
 	public String getPicUrl() {
 		return picUrl;
 	}
@@ -11,15 +11,16 @@ public class ImageMessage extends BaseMessage{
 		this.picUrl = picUrl;
 	}
 	public String getMediaId() {
-		return mediaId;
+		return MediaId;
 	}
 	public void setMediaId(String mediaId) {
-		this.mediaId = mediaId;
+		MediaId = mediaId;
 	}
 	public String getMsgId() {
-		return msgId;
+		return MsgId;
 	}
 	public void setMsgId(String msgId) {
-		this.msgId = msgId;
+		MsgId = msgId;
 	}
+	
 }
