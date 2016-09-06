@@ -42,6 +42,7 @@ public class MessageUtil {
 		
 		Element root = doc.getRootElement();
 		
+		@SuppressWarnings("unchecked")
 		List<Element> list = root.elements();
 		
 		for(Element e:list){

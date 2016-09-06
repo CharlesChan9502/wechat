@@ -57,15 +57,6 @@ public class WeChatServlet extends HttpServlet{
 					message = MessageUtil.initText(toUserName, fromUserName, MessageUtil.menuText());
 					
 				}
-				
-				
-//				TextMessage text = new TextMessage();
-//				text.setFromUserName(toUserName);
-//				text.setToUserName(fromUserName);
-//				text.setMsgType("text");
-//				text.setCreateTime(new Date().getTime()+"");
-//				text.setContent("您发送的消息是："+content);
-//				message = MessageUtil.textMessageToXml(text);
 			}else if(MessageUtil.MESSAGE_EVENT.equals(msgType)){
 				String eventType = map.get("Event");
 				if(MessageUtil.MESSAGE_SUBSCRIBE.equals(eventType)){
