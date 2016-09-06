@@ -56,7 +56,7 @@ public class WeChatServlet extends HttpServlet{
 				}else if("?".equals(content)||"£¿".equals(content)){
 					message = MessageUtil.initText(toUserName, fromUserName, MessageUtil.menuText());
 				}else if("3".equals(content)){
-					message = MessageUtil.initImage(toUserName, fromUserName);
+					message = MessageUtil.initNews(toUserName, fromUserName);
 				}
 			}else if(MessageUtil.MESSAGE_EVENT.equals(msgType)){
 				String eventType = map.get("Event");
