@@ -14,6 +14,7 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+import com.charles.po.ImageMessage;
 import com.charles.po.TextMessage;
 import com.thoughtworks.xstream.XStream;
 
@@ -59,7 +60,7 @@ public class MessageUtil {
 		return xstream.toXML(textMessage);
 	}
 	
-	
+	//回复消息
 	public static String initText(String toUserName,String fromUserName,String content){
 		TextMessage text = new TextMessage();
 		text.setFromUserName(toUserName);
@@ -68,6 +69,25 @@ public class MessageUtil {
 		text.setCreateTime(new Date().getTime()+"");
 		text.setContent("后台返回信息是："+content);
 		return textMessageToXml(text);
+	}
+	
+	//回复图片
+	public static String initImage(String toUserName,String fromUserName){
+		ImageMessage image = new ImageMessage();
+		image.setFromUserName(toUserName);
+		image.setToUserName(fromUserName);
+		image.setMsgType(MESSAGE_IMAGE);
+		image.setCreateTime(new Date().getTime()+"");
+		image.setMediaId("test");
+		image.setPicUrl("http://6b4010e6.ngrok.natapp.cn/wechat/images/1.jpg");
+		return imageMessageToXml(image);
+	}
+	
+	//图片转换为xml
+	public static String imageMessageToXml(ImageMessage imageMessage){
+		XStream xstream = new XStream();
+		xstream.alias("xml", imageMessage.getClass());
+		return xstream.toXML(imageMessage);
 	}
 	
 	//主菜单
