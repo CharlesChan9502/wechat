@@ -154,15 +154,20 @@ public class WeiXinUtil {
 	 * @throws ParseException 
      */
     @SuppressWarnings("unused")
-	public static WeixinOauth2Token getOauth2AccessToken(String appId, String appSecret, String code) throws ParseException, IOException {
+	public static WeixinOauth2Token getOauth2AccessToken(String code) throws ParseException, IOException {//String appId, String appSecret, 
         WeixinOauth2Token wat = null;
         // 拼接请求地址
-       /* String requestUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code";
-        requestUrl = requestUrl.replace("APPID", appId);
+        String requestUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code";
+       /* requestUrl = requestUrl.replace("APPID", appId);
         requestUrl = requestUrl.replace("SECRET", appSecret);
         requestUrl = requestUrl.replace("CODE", code);*/
         // 获取网页授权凭证
-        String url = ACCESS_TOKEN_URL.replace("APPID", APPID).replace("APPSECRET", APPSECRET);
+        String url = requestUrl.replace("APPID", APPID);
+        url = url.replace("SECRET", APPSECRET);
+        if(code==null){
+        	code="";
+        }
+        url = url.replace("CODE", code);
         JSONObject jsonObject = doGetStr(url);
         if (null != jsonObject) {
             try {
