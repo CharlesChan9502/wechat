@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.charles.po.SNSUserInfo;
 import com.charles.po.WeixinOauth2Token;
+import com.charles.util.UserUtil;
 import com.charles.util.WeiXinUtil;
 
 public class OAuthServlet extends HttpServlet{
@@ -29,13 +30,13 @@ public class OAuthServlet extends HttpServlet{
         // 用户同意授权
         if (!"authdeny".equals(code)) {
             // 获取网页授权access_token
-            WeixinOauth2Token weixinOauth2Token = WeiXinUtil.getOauth2AccessToken(code);
+            WeixinOauth2Token weixinOauth2Token = UserUtil.getOauth2AccessToken(code);
             // 网页授权接口访问凭证
             String accessToken = weixinOauth2Token.getAccessToken();
             // 用户标识
             String openId = weixinOauth2Token.getOpenId();
             // 获取用户信息
-            SNSUserInfo snsUserInfo = WeiXinUtil.getSNSUserInfo(accessToken, openId);
+            SNSUserInfo snsUserInfo = UserUtil.getSNSUserInfo(accessToken, openId);
 
             // 设置要传递的参数
             request.setAttribute("snsUserInfo", snsUserInfo);

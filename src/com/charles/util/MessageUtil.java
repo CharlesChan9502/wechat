@@ -15,6 +15,7 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+import com.charles.po.Images;
 import com.charles.po.News;
 import com.charles.po.NewsMessage;
 import com.charles.po.TextMessage;
@@ -34,6 +35,7 @@ public class MessageUtil {
 	public static final String MESSAGE_UNSUBSCRIBE = "unsubscribe";
 	public static final String MESSAGE_CLICK = "CLICK";
 	public static final String MESSAGE_VIEW = "VIEW";
+	public static final String MESSAGE_IMAGES = "image";
 	
 	//xml转为Map集合
 	public static Map<String, String> xmlToMap(HttpServletRequest request) throws IOException, DocumentException{
@@ -73,6 +75,19 @@ public class MessageUtil {
 		return textMessageToXml(text);
 	}
 	
+	//回复图片信息
+	public static String initImages(String toUserName,String fromUserName){
+		Images images = new Images();
+		images.setFromUserName(toUserName);
+		images.setToUserName(fromUserName);
+		images.setMsgType(MessageUtil.MESSAGE_IMAGES);
+		images.setCreateTime(new Date().getDate()+"");
+		images.setMediaId("v_7VfW_OdNMnH68xjiK7XnFoyGYK-ZyRHSF2A8uySfzYSCcs9L2pzYOdptlHMHNu");
+		images.setPicUrl("http://3f559527.ngrok.natapp.cn/wechat/images/abc.jpg");
+		return ImagesToXml(images);
+		
+	}
+	
 	//图文消息
 	public static String initNews(String toUserName,String fromUserName){
 		NewsMessage news = new NewsMessage();
@@ -87,7 +102,7 @@ public class MessageUtil {
 		List<News> newsList = new ArrayList<News>();
 		for(int i=0;i<new Integer(news.getArticleCount());i++){
 			News n = new News();
-			n.setPicUrl("http://6b4010e6.ngrok.natapp.cn/wechat/images/abc.jpg");
+			n.setPicUrl("http://3f559527.ngrok.natapp.cn/wechat/images/abc.jpg");
 			n.setTitle("测试标题");
 			n.setDescription("测试描述");
 			n.setUrl("www.baidu.com");
@@ -102,6 +117,12 @@ public class MessageUtil {
 		xstream.alias("xml", newsMessage.getClass());
 		xstream.alias("item",new News().getClass());
 		return xstream.toXML(newsMessage);
+	}
+	
+	public static String ImagesToXml(Images images){
+		XStream xstream = new XStream();
+		xstream.alias("xml", images.getClass());
+		return xstream.toXML(images);
 	}
 	
 	//主菜单
