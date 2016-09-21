@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.charles.po.SNSUserInfo;
 import com.charles.po.WeixinOauth2Token;
 import com.charles.util.UserUtil;
-import com.charles.util.WeiXinUtil;
 
 public class OAuthServlet extends HttpServlet{
 

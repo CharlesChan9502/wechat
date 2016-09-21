@@ -32,7 +32,7 @@ public class UserUtil {
 	private static final String APPID = "wxfb198093aff4b211";//wx6bad3c216a01f1e3
 	private static final String APPSECRET = "797c2c24157e417f7573726fde4001eb";//f9c931731d5b7ccd51644850a49a1b52
 	
-	private static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
+//	private static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 	
 	/**
 	 * get请求
@@ -112,9 +112,10 @@ public class UserUtil {
         // 拼接请求地址
         String requestUrl = "https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID";
         requestUrl = requestUrl.replace("ACCESS_TOKEN", accessToken).replace("OPENID", openId);
+        JSONObject jsonObject = UserUtil.httpsRequest(requestUrl, "GET", null);
         // 获取网页授权凭证
-        String url = ACCESS_TOKEN_URL.replace("APPID", APPID).replace("APPSECRET", APPSECRET);
-        JSONObject jsonObject = doGetStr(url);
+//        String url = ACCESS_TOKEN_URL.replace("APPID", APPID).replace("APPSECRET", APPSECRET);
+//        JSONObject jsonObject = doGetStr(url);
         if (null != jsonObject) {
             try {
                 snsUserInfo = new SNSUserInfo();

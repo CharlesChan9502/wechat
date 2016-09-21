@@ -81,9 +81,10 @@ public class MessageUtil {
 		images.setFromUserName(toUserName);
 		images.setToUserName(fromUserName);
 		images.setMsgType(MessageUtil.MESSAGE_IMAGES);
-		images.setCreateTime(new Date().getDate()+"");
+		images.setCreateTime(System.currentTimeMillis()+"");
 		images.setMediaId("v_7VfW_OdNMnH68xjiK7XnFoyGYK-ZyRHSF2A8uySfzYSCcs9L2pzYOdptlHMHNu");
-		images.setPicUrl("http://3f559527.ngrok.natapp.cn/wechat/images/abc.jpg");
+		images.setPicUrl("http://1542dae2.ngrok.natapp.cn/wechat/images/abc.jpg");
+		images.setMsgId("1234567890123456");
 		return ImagesToXml(images);
 		
 	}
@@ -102,7 +103,7 @@ public class MessageUtil {
 		List<News> newsList = new ArrayList<News>();
 		for(int i=0;i<new Integer(news.getArticleCount());i++){
 			News n = new News();
-			n.setPicUrl("http://3f559527.ngrok.natapp.cn/wechat/images/abc.jpg");
+			n.setPicUrl("http://1542dae2.ngrok.natapp.cn/wechat/images/abc.jpg");
 			n.setTitle("²âÊÔ±êÌâ");
 			n.setDescription("²âÊÔÃèÊö");
 			n.setUrl("www.baidu.com");

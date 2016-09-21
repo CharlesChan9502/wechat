@@ -4,6 +4,13 @@ public class Images extends BaseMessage {
 	private String PicUrl;
 	private String MediaId;
 	private String CreateTime;
+	private String MsgId;
+	public String getMsgId() {
+		return MsgId;
+	}
+	public void setMsgId(String msgId) {
+		MsgId = msgId;
+	}
 	public String getCreateTime() {
 		return CreateTime;
 	}
