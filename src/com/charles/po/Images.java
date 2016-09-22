@@ -1,32 +1,26 @@
 package com.charles.po;
 
 public class Images extends BaseMessage {
-	private String PicUrl;
-	private String MediaId;
+	private String MsgType;
+	private MediaId Image;
 	private String CreateTime;
-	private String MsgId;
-	public String getMsgId() {
-		return MsgId;
+	
+	public String getMsgType() {
+		return MsgType;
 	}
-	public void setMsgId(String msgId) {
-		MsgId = msgId;
+	public void setMsgType(String msgType) {
+		MsgType = msgType;
+	}
+	public MediaId getImage() {
+		return Image;
+	}
+	public void setImage(MediaId image) {
+		Image = image;
 	}
 	public String getCreateTime() {
 		return CreateTime;
 	}
 	public void setCreateTime(String createTime) {
 		CreateTime = createTime;
-	}
-	public String getPicUrl() {
-		return PicUrl;
-	}
-	public void setPicUrl(String picUrl) {
-		PicUrl = picUrl;
-	}
-	public String getMediaId() {
-		return MediaId;
-	}
-	public void setMediaId(String mediaId) {
-		MediaId = mediaId;
 	}
 }

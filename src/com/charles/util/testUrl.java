@@ -26,20 +26,20 @@ public class testUrl {
      * @throws 说明发生此异常的条件
      */
     public static void main(String[] args) throws ParseException, IOException, KeyManagementException, NoSuchAlgorithmException, NoSuchProviderException {
-    	AccessToken accessToken = WeiXinUtil.getAccessToken();
+    	/*AccessToken accessToken = WeiXinUtil.getAccessToken();
     	String source="http://1542dae2.ngrok.natapp.cn/wechat/oauthServlet";
-        System.out.println(UserUtil.urlEncodeUTF8(source));
+        System.out.println(UserUtil.urlEncodeUTF8(source));*/
 /*    	AccessToken accessToken = WeiXinUtil.getAccessToken();
     	String path = "C:/Users/Administrator/Desktop/22.jpg";
     	String mediaId = WeiXinUtil.upload(path, accessToken.getToken(), "image");*/
-    	/*AccessToken accessToken = WeiXinUtil.getAccessToken();
+    	AccessToken accessToken = WeiXinUtil.getAccessToken();
     	String menu = JSONObject.fromObject(WeiXinUtil.initMenu()).toString();
     	int result = WeiXinUtil.createMenu(accessToken.getToken(), menu);
     	if(result==0){
     		System.out.println("success");
     	}else{
     		System.out.println("errcode:"+result);
-    	}*/
+    	}
     }
 
 }

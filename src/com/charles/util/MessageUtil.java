@@ -16,6 +16,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import com.charles.po.Images;
+import com.charles.po.MediaId;
 import com.charles.po.News;
 import com.charles.po.NewsMessage;
 import com.charles.po.TextMessage;
@@ -77,14 +78,14 @@ public class MessageUtil {
 	
 	//ªÿ∏¥Õº∆¨–≈œ¢
 	public static String initImages(String toUserName,String fromUserName){
+		MediaId mediaId = new MediaId();
 		Images images = new Images();
 		images.setFromUserName(toUserName);
 		images.setToUserName(fromUserName);
 		images.setMsgType(MessageUtil.MESSAGE_IMAGES);
 		images.setCreateTime(System.currentTimeMillis()+"");
-		images.setMediaId("v_7VfW_OdNMnH68xjiK7XnFoyGYK-ZyRHSF2A8uySfzYSCcs9L2pzYOdptlHMHNu");
-		images.setPicUrl("http://1542dae2.ngrok.natapp.cn/wechat/images/abc.jpg");
-		images.setMsgId("1234567890123456");
+		mediaId.setMediaId("v_7VfW_OdNMnH68xjiK7XnFoyGYK-ZyRHSF2A8uySfzYSCcs9L2pzYOdptlHMHNu");
+		images.setImage(mediaId);
 		return ImagesToXml(images);
 		
 	}
@@ -103,7 +104,7 @@ public class MessageUtil {
 		List<News> newsList = new ArrayList<News>();
 		for(int i=0;i<new Integer(news.getArticleCount());i++){
 			News n = new News();
-			n.setPicUrl("http://1542dae2.ngrok.natapp.cn/wechat/images/abc.jpg");
+			n.setPicUrl("http://4358d2e3.ngrok.natapp.cn/wechat/images/abc.jpg");
 			n.setTitle("≤‚ ‘±ÍÃ‚");
 			n.setDescription("≤‚ ‘√Ë ˆ");
 			n.setUrl("www.baidu.com");
