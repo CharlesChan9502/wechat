@@ -2,6 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>wechat</display-name>
  
+ <!--  -->
  <servlet>
  	<servlet-name>wechatServlet</servlet-name>
  	<servlet-class>com.charles.servlet.WeChatServlet</servlet-class>
@@ -12,6 +13,7 @@
  	<url-pattern>/wx.do</url-pattern>
  </servlet-mapping>
  
+ <!-- 授权证书 -->
    <servlet>
         <servlet-name>oauthServlet</servlet-name>
         <servlet-class>com.charles.servlet.OAuthServlet</servlet-class>
@@ -21,6 +23,16 @@
         <url-pattern>/oauthServlet</url-pattern>
     </servlet-mapping>
   
+  <!-- wechat4j -->
+  <servlet>
+  		<servlet-name>wechat4jServlet</servlet-name>
+        <servlet-class>com.charles.wechat4j.servlet.WeChatServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+ 		<servlet-name>wechat4jServlet</servlet-name>
+        <url-pattern>/wechat4jServlet</url-pattern>
+  
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
